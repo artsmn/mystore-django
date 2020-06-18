@@ -10,8 +10,16 @@ class CartAdmin(admin.ModelAdmin):
     inlines = [CartItemInline]
 
 
-# Register your models here.
-admin.site.register(Product)
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+
+
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [ProductImageInline]
+
+
+# Register your models here
+admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductImage)
 admin.site.register(Category)
 admin.site.register(Cart, CartAdmin)

@@ -27,7 +27,7 @@ SECRET_KEY = 'hu=iih_xl-tpxfe!vngkn8hcp8ecwlg@3%6l+b=9v61$s=oe5b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['apimystore.artsmn.ml']
+ALLOWED_HOSTS = ['apimystore.artsmn.ml', '127.0.0.1']
 
 
 # Application definition
