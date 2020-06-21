@@ -46,7 +46,7 @@ class CartViewSet(viewsets.ViewSet):
         session_key = request.META.get('HTTP_SESSION_KEY')
         if session_key:
             cart = get_object_or_404(Cart, session_key=session_key)
-            if len(Order.objects.filter(cart=cart)) is 0:
+            if len(Order.objects.filter(cart=cart)) == 0:
                 cart.update_items(request.data)
                 serializer = CartSerializer(cart)
                 return Response(serializer.data, 201)
@@ -82,7 +82,8 @@ class OrderViewSet(viewsets.ViewSet):
 
         emails = [user.email for user in staff]
 
-        send_mail("New order", "New order from {} {}. Check it out in admin panel.\n Order id: {}"
+        send_mail("Новый заказ",
+                  "Новый заказ от {} {}. Посетите админку https://apimystore.artsmn.ml/admin/ .\n Order id: {}"
                   .format(buyer.name, buyer.surname, order.id), settings.EMAIL_HOST_USER, emails)
 
         serializer = OrderSerializer(order)
